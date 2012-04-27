@@ -35,6 +35,25 @@ To generate a new scaffold:
 padrino g scaffold ModelName property:type
 ```
 
+For example:
+
+```
+padrino g scaffold Product title:string summary:text quantity:integer available_from:datetime display:boolean
+```
+
+This will generate the following:
+
+* A controller, helper and controller test for Products
+* An index and show view for Products
+* A model, model test and database migration for Product
+* A blueprints file if one doesn't exist
+
+It will add:
+
+* A reference to blueprints.rb to test_config.rb if required
+* Add a Product blueprint and it's properties to the blueprints.rb file
+
+
 Admin Controller Tests
 ======================
 
@@ -46,6 +65,9 @@ padrino g admin_controller_tests ControllerName
 
 Other requirements
 ------------------
+
+test_config.rb
+==============
 
 You will need to add the following code to your test_config.rb for the generated tests to work correctly.
 
@@ -147,11 +169,33 @@ def ok?
 end
 ```
 
+blueprints.rb
+=============
+
+If you already have a blueprints.rb file in your current Padrino project then you will need to add the following for some of the tests to work:
+
+```
+module Factory
+  class << self
+
+    def make_admin
+      account = Account.make(:admin)
+      account.save!
+      account
+    end
+
+  end
+end
+```
+
+Also the scaffold generator looks for *# END blueprints* as a marker to insert the generated models blueprint. This is a bit... well crap... but I currently haven't thought of another way to do it.
+
 To Do List
 ----------
 
 * Finish writing up the Read Me
-* Do some other stuff
+* Get generators to check the test_config.rb to make sure that the test helpers have been added
+* Tighten up some of the other requirements, certainly the blueprint inserts
 
 
 Contributing to lazy-head-gen
