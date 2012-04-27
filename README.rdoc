@@ -16,5 +16,3 @@ Description goes here.
 
 Copyright (c) 2012 Stuart Chinery. See LICENSE.txt for
 further details.
-
-"Some fucks were given in the making of this gem"
