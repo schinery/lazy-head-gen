@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/sleepingstu/lazy-head-gen"
   gem.license = "MIT"
   gem.summary = %Q{Some extra generators for the glorious Padrino, using ActiveRecord and MiniTest.}
-  gem.description = %Q{Blah: longer description of your gem}
+  gem.description = %Q{Lazy Head Gen is simply a couple of extra generators for the excellent Padrino framework.}
   gem.email = "stuart.chinery@headlondon.com"
   gem.authors = ["Stuart Chinery"]
   # dependencies defined in Gemfile
