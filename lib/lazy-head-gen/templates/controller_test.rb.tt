@@ -1,0 +1,95 @@
+require File.expand_path(File.dirname(__FILE__) + '/../../test_config.rb')
+
+describe "<%= @controller if @controller %>Controller" do
+
+  # START GET index
+  describe "GET index" do
+    before do
+      get "/<%= @pluralized %>"
+    end
+
+    it "should display the <%= @pluralized %> index page" do
+      assert_match "This is the index page", body
+    end
+  end
+  # END GET index
+
+  # START GET show
+  describe "GET show" do
+    before do
+      @<%= @singular %> = <%= @model %>.make
+      get "/<%= @pluralized %>/show/#{@<%= @singular %>.to_param}"
+    end
+
+    it "should display the <%= @pluralized %> show page" do
+      assert_match "This is the show page", body
+    end
+  end
+  # END GET show
+
+<% if @create_full -%>
+  # START GET new
+  describe "GET new" do
+    before do
+      get "/<%= @pluralized %>/new"
+    end
+
+    it "should display the <%= @pluralized %> new page" do
+      assert_match "This is the new page", body
+    end
+  end
+  # END GET new
+
+  # START POST create
+  describe "Post create" do
+    before do
+      post "/<%= @pluralized %>/create", {}
+    end
+
+    it "should return the create text" do
+      assert_match "This is the create action", last_response.body
+    end
+  end
+  # END POST create
+
+  # START GET edit
+  describe "GET edit" do
+    before do
+      @<%= @singular %> = <%= @model %>.make
+      get "/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}"
+    end
+
+    it "should display the <%= @pluralized %> edit page" do
+      assert_match "This is the edit page", body
+    end
+  end
+  # END GET edit
+
+  # START PUT update
+  describe "PUT update" do
+    before do
+      @<%= @singular %> = <%= @singular %>.make
+      put "/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", {}
+    end
+
+    it "should return the update text" do
+      assert_match "This is the update action", body
+    end
+  end
+  # END PUT update
+
+  # START DELETE destroy
+  describe "on DELETE destroy" do
+    before do
+      @<%= @singular %> = <%= @singular %>.make
+      get "/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
+    end
+
+    it "should return a status of 405" do
+      assert_equal 405, status
+    end
+  end
+  # END DELETE destroy
+
+<% end -%>
+end

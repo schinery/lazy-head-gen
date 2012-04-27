@@ -1,0 +1,9 @@
+class <%= @model if @model %> < ActiveRecord::Base
+
+  # Model properties
+  #
+<% @properties.each do |property| -%>
+  # <%= property %>
+<% end -%>
+
+end

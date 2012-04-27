@@ -1,0 +1,15 @@
+require File.expand_path(File.dirname(__FILE__) + '/../test_config.rb')
+
+describe "<%= @model if @model %> Model" do
+
+  describe "constructor" do
+    before do
+      @<%= @singular %> = <%= @model %>.new
+    end
+
+    it "can construct a new instance" do
+      refute_nil @<%= @singular %>
+    end
+  end
+
+end

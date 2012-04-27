@@ -1,0 +1,32 @@
+require 'machinist/active_record'
+require 'faker'
+
+# START blueprints
+
+Account.blueprint do
+  name { Faker::Name.first_name }
+  surname { Faker::Name.last_name }
+  email { Faker::Internet.email }
+  password { "password" }
+  password_confirmation { "password" }
+  role { "admin" }
+end
+
+
+# END blueprints
+
+# A factory which we can use to build objects which are a bit more complex or
+# which require special setup which can't be done by Machinist without a bit of
+# help.
+#
+module Factory
+  class << self
+
+    def make_admin
+      account = Account.make(:admin)
+      account.save!
+      account
+    end
+
+  end
+end

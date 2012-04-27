@@ -1,0 +1,33 @@
+<%= @app_name %>.controllers <%= ":#{@pluralized}" if @pluralized %> do
+
+  get :index do
+    render "<%= @pluralized if @pluralized %>/index"
+  end
+
+  get :show, :with => :id do
+    render "<%= @pluralized if @pluralized %>/show"
+  end
+
+<% if @create_full -%>
+  get :new do
+    render "<%= @pluralized if @pluralized %>/new"
+  end
+
+  post :create do
+    "This is the create action"
+  end
+
+  get :edit, :with => :id do
+    render "<%= @pluralized if @pluralized %>/edit"
+  end
+
+  put :update, :with => :id do
+    "This is the update action"
+  end
+
+  delete :destroy, :with => :id do
+
+  end
+
+<% end -%>
+end

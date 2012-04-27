@@ -1,0 +1,197 @@
+require File.expand_path(File.dirname(__FILE__) + '/../../test_config.rb')
+
+describe "Admin::<%= @controller if @controller %>Controller" do
+
+  # START NOT LOGGED IN
+  describe "when not logged in" do
+
+    # START GET index
+    describe "GET index" do
+      before do
+        get "/admin/<%= @pluralized %>"
+      end
+
+      it "should not display the <%= @pluralized %> index page" do
+        assert_not_logged_in
+      end
+    end
+    # END GET index
+
+    # START GET new
+    describe "GET new" do
+      before do
+        get "/admin/<%= @pluralized %>/new"
+      end
+
+      it "should not display the <%= @pluralized %> new page" do
+        assert_not_logged_in
+      end
+    end
+    # END GET new
+
+    # START POST create
+    describe "Post create" do
+      before do
+        post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.plan
+      end
+
+      it "should not return the created text" do
+        assert_not_logged_in
+      end
+    end
+    # END POST create
+
+    # START GET edit
+    describe "GET edit" do
+      before do
+        @<%= @singular %> = <%= @model %>.make
+        get "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}"
+      end
+
+      it "should not display the <%= @pluralized %> edit page" do
+        assert_not_logged_in
+      end
+    end
+    # END GET edit
+
+    # START PUT update
+    describe "PUT update" do
+      before do
+        @<%= @singular %> = <%= @model %>.make
+        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", :<%= @singular %> => <%= @model %>.plan
+      end
+
+      it "should not return the updated text" do
+        assert_not_logged_in
+      end
+    end
+    # END PUT update
+
+    # START DELETE destroy
+    describe "on DELETE destroy" do
+      before do
+        @<%= @singular %> = <%= @model %>.make
+        get "/admin/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
+      end
+
+      it "should not return the destroyed text" do
+        assert_destroy_not_logged_in
+      end
+    end
+    # END DELETE destroy
+
+  end
+  # END NOT LOGGED IN
+
+  # START LOGGED IN
+  describe "when logged in" do
+
+    before do
+      @account = Factory.make_admin
+      login_as_admin(@account)
+    end
+
+    # START GET index
+    describe "GET index" do
+      before do
+        get "/admin/<%= @pluralized %>"
+      end
+
+      it "should display the <%= @pluralized %> index page" do
+        assert_logged_in
+        assert_equal "/admin/<%= @pluralized %>", path
+      end
+    end
+    # END GET index
+
+    # START GET new
+    describe "GET new" do
+      before do
+        get "/admin/<%= @pluralized %>/new"
+      end
+
+      it "should display the <%= @pluralized %> new page" do
+        assert_logged_in
+        assert_equal "/admin/<%= @pluralized %>/new", path
+      end
+    end
+    # END GET new
+
+    # START POST create
+    describe "POST create" do
+      before do
+        @<%= @singular %>_count = <%= @model %>.count
+        post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.plan
+      end
+
+      it "should create a <%= @singular %>" do
+        assert_equal 302, status
+        assert location.include?("/admin/<%= @pluralized %>/edit/")
+        assert_equal @<%= @singular %>_count + 1, <%= @model %>.count
+      end
+    end
+    # END POST create
+
+    # START GET edit
+    describe "GET edit" do
+      before do
+        @<%= @singular %> = <%= @model %>.make
+        get "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}"
+      end
+
+      it "should display the <%= @pluralized %> edit page" do
+        assert_logged_in
+        assert_equal "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}", path
+      end
+    end
+    # END GET edit
+
+    # START PUT update
+    describe "PUT update" do
+      before do
+        @<%= @singular %> = <%= @model %>.make
+        @<%= @singular %>_count = <%= @model %>.count
+        @<%= @singular %>_hash = <%= @model %>.plan
+
+        key_and_value = get_key_and_value(@product)
+        if key_and_value[0] and key_and_value[1]
+          @key = key_and_value[0]
+          @value = key_and_value[1]
+          @<%= @singular %>_hash = <%= @model %>.plan(@key => @value)
+        end
+
+        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", :<%= @singular %> => @<%= @singular %>_hash
+
+        @updated_<%= @singular %> = <%= @model %>.find(@<%= @singular %>.to_param)
+      end
+
+      it "should update a <%= @singular %>" do
+        assert_equal status, 302
+        assert location.include?("/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}")
+        assert_equal @updated_<%= @singular %>.id, @<%= @singular %>.id
+        assert_equal @<%= @singular %>_count, <%= @model %>.count
+        # Only assert if the <%= @singular %> has a key other than id or timestamps
+        assert_equal @updated_<%= @singular %>.attributes[@key], @value if @key and @value
+      end
+    end
+    # END PUT update
+
+    # START DELETE destroy
+    describe "DELETE destroy" do
+      before do
+        @<%= @singular %> = <%= @model %>.make
+        @<%= @singular %>_count = <%= @model %>.count
+        delete "/admin/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
+      end
+
+      it "should destroy a <%= @singular %>" do
+        assert_equal 302, status
+        assert_equal @<%= @singular %>_count - 1, <%= @model %>.count
+      end
+    end
+    # END DELETE destroy
+
+  end
+  # END LOGGED IN
+
+end
