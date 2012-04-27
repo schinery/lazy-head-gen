@@ -35,7 +35,7 @@ To generate a new scaffold:
 padrino g scaffold ModelName property:type
 ```
 
-For example:
+For example to generate a scaffold for Products:
 
 ```
 padrino g scaffold Product title:string summary:text quantity:integer available_from:datetime display:boolean
@@ -48,7 +48,7 @@ This will generate the following:
 * A model, model test and database migration for Product
 * A blueprints file if one doesn't exist
 
-It will add:
+It will also add:
 
 * A reference to blueprints.rb to test_config.rb if required
 * Add a Product blueprint and it's properties to the blueprints.rb file
@@ -57,11 +57,21 @@ It will add:
 Admin Controller Tests
 ======================
 
-To generate new admin controller tests:
+To generate a new admin controller test:
 
 ```
 padrino g admin_controller_tests ControllerName
 ```
+
+Controller name should be the name of an existing admin controller.
+
+For example to generate an admin controller test for products:
+
+```
+padrino g admin_controller_tests products
+```
+
+This will generate a fully tested admin controller test for the 7 CRUD routes.
 
 Other requirements
 ------------------
@@ -209,7 +219,8 @@ Contributing to lazy-head-gen
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+Copyright
+---------
 
 Copyright (c) 2012 Stuart Chinery, http://www.headlondon.com
 See LICENSE.txt for further details.
