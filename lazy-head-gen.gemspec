@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lazy-head-gen"
-  s.version = "0.0.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Chinery"]
-  s.date = "2012-01-18"
+  s.date = "2012-04-27"
   s.description = "Blah: longer description of your gem"
   s.email = "stuart.chinery@headlondon.com"
   s.extra_rdoc_files = [
@@ -24,35 +24,115 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "lazy-head-gen.gemspec",
     "lib/lazy-head-gen.rb",
+    "lib/lazy-head-gen/admin_controller_tests.rb",
+    "lib/lazy-head-gen/scaffold.rb",
+    "lib/lazy-head-gen/templates/admin_controller_test.rb.tt",
+    "lib/lazy-head-gen/templates/blueprints.rb.tt",
+    "lib/lazy-head-gen/templates/controller.rb.tt",
+    "lib/lazy-head-gen/templates/controller_test.rb.tt",
+    "lib/lazy-head-gen/templates/helper.rb.tt",
+    "lib/lazy-head-gen/templates/model.rb.tt",
+    "lib/lazy-head-gen/templates/model_test.rb.tt",
+    "lib/lazy-head-gen/templates/view.erb.tt",
     "test/helper.rb",
+    "test/lazy-head-gen/test_admin_controller_tests.rb",
+    "test/lazy-head-gen/test_scaffold.rb",
+    "test/load_paths.rb",
     "test/test_lazy-head-gen.rb"
   ]
   s.homepage = "http://github.com/sleepingstu/lazy-head-gen"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
-  s.summary = "Blah: one-line summary of your gem"
+  s.rubygems_version = "1.8.19"
+  s.summary = "Some extra generators for the glorious Padrino, using ActiveRecord and MiniTest."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<padrino>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.1.3"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<json>, [">= 1.5.3"])
+      s.add_development_dependency(%q<nokogiri>, [">= 1.4.4"])
+      s.add_development_dependency(%q<grit>, [">= 2.4.1"])
+      s.add_development_dependency(%q<rack>, [">= 1.3.0"])
+      s.add_development_dependency(%q<rake>, [">= 0.8.7"])
+      s.add_development_dependency(%q<yard>, [">= 0.7.2"])
+      s.add_development_dependency(%q<rack-test>, [">= 0.5.0"])
+      s.add_development_dependency(%q<fakeweb>, [">= 1.2.8"])
+      s.add_development_dependency(%q<webrat>, [">= 0.5.1"])
+      s.add_development_dependency(%q<haml>, [">= 2.2.22"])
+      s.add_development_dependency(%q<erubis>, [">= 2.7.0"])
+      s.add_development_dependency(%q<slim>, [">= 0.9.2"])
+      s.add_development_dependency(%q<uuid>, [">= 2.3.1"])
+      s.add_development_dependency(%q<builder>, [">= 2.1.2"])
+      s.add_development_dependency(%q<bcrypt-ruby>, [">= 0"])
+      s.add_development_dependency(%q<system_timer>, [">= 1.0"])
+      s.add_development_dependency(%q<jruby-openssl>, [">= 0"])
+      s.add_development_dependency(%q<mocha>, ["~> 0.10.0"])
+      s.add_development_dependency(%q<minitest>, ["~> 2.6.0"])
+      s.add_development_dependency(%q<lumberjack>, [">= 0"])
+      s.add_development_dependency(%q<ruby-debug>, [">= 0"])
     else
+      s.add_dependency(%q<padrino>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_dependency(%q<bundler>, ["~> 1.1.3"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 1.5.3"])
+      s.add_dependency(%q<nokogiri>, [">= 1.4.4"])
+      s.add_dependency(%q<grit>, [">= 2.4.1"])
+      s.add_dependency(%q<rack>, [">= 1.3.0"])
+      s.add_dependency(%q<rake>, [">= 0.8.7"])
+      s.add_dependency(%q<yard>, [">= 0.7.2"])
+      s.add_dependency(%q<rack-test>, [">= 0.5.0"])
+      s.add_dependency(%q<fakeweb>, [">= 1.2.8"])
+      s.add_dependency(%q<webrat>, [">= 0.5.1"])
+      s.add_dependency(%q<haml>, [">= 2.2.22"])
+      s.add_dependency(%q<erubis>, [">= 2.7.0"])
+      s.add_dependency(%q<slim>, [">= 0.9.2"])
+      s.add_dependency(%q<uuid>, [">= 2.3.1"])
+      s.add_dependency(%q<builder>, [">= 2.1.2"])
+      s.add_dependency(%q<bcrypt-ruby>, [">= 0"])
+      s.add_dependency(%q<system_timer>, [">= 1.0"])
+      s.add_dependency(%q<jruby-openssl>, [">= 0"])
+      s.add_dependency(%q<mocha>, ["~> 0.10.0"])
+      s.add_dependency(%q<minitest>, ["~> 2.6.0"])
+      s.add_dependency(%q<lumberjack>, [">= 0"])
+      s.add_dependency(%q<ruby-debug>, [">= 0"])
     end
   else
+    s.add_dependency(%q<padrino>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+    s.add_dependency(%q<bundler>, ["~> 1.1.3"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<json>, [">= 1.5.3"])
+    s.add_dependency(%q<nokogiri>, [">= 1.4.4"])
+    s.add_dependency(%q<grit>, [">= 2.4.1"])
+    s.add_dependency(%q<rack>, [">= 1.3.0"])
+    s.add_dependency(%q<rake>, [">= 0.8.7"])
+    s.add_dependency(%q<yard>, [">= 0.7.2"])
+    s.add_dependency(%q<rack-test>, [">= 0.5.0"])
+    s.add_dependency(%q<fakeweb>, [">= 1.2.8"])
+    s.add_dependency(%q<webrat>, [">= 0.5.1"])
+    s.add_dependency(%q<haml>, [">= 2.2.22"])
+    s.add_dependency(%q<erubis>, [">= 2.7.0"])
+    s.add_dependency(%q<slim>, [">= 0.9.2"])
+    s.add_dependency(%q<uuid>, [">= 2.3.1"])
+    s.add_dependency(%q<builder>, [">= 2.1.2"])
+    s.add_dependency(%q<bcrypt-ruby>, [">= 0"])
+    s.add_dependency(%q<system_timer>, [">= 1.0"])
+    s.add_dependency(%q<jruby-openssl>, [">= 0"])
+    s.add_dependency(%q<mocha>, ["~> 0.10.0"])
+    s.add_dependency(%q<minitest>, ["~> 2.6.0"])
+    s.add_dependency(%q<lumberjack>, [">= 0"])
+    s.add_dependency(%q<ruby-debug>, [">= 0"])
   end
 end
 
