@@ -23,7 +23,7 @@ module Factory
   class << self
 
     def make_admin
-      account = Account.make(:admin)
+      account = Account.make!
       account.save!
       account
     end

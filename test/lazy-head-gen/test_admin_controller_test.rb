@@ -1,6 +1,6 @@
 require 'helper'
 
-describe "AdminControllerTests generator" do
+describe "AdminControllerTest generator" do
   def setup
     @app_tmp = "#{Dir.tmpdir}/lazy-head-gen-tests/#{UUID.new.generate}"
     capture_io { FileUtils.mkdir_p(@app_tmp) }
@@ -14,7 +14,7 @@ describe "AdminControllerTests generator" do
 
   describe "when generating a new admin controller test" do
     it "should fail outside of the app root" do
-      out, err = capture_io { generate(:admin_controller_tests, 'demo_items') }
+      out, err = capture_io { generate(:admin_controller_test, 'demo_items') }
       assert_match(/not at the root/, out)
     end
 
@@ -24,7 +24,7 @@ describe "AdminControllerTests generator" do
       end
 
       it "should fail if the admin controller does not exist" do
-        out, err = capture_io { generate(:admin_controller_tests, 'demo_items', "-r=#{@project_dir}") }
+        out, err = capture_io { generate(:admin_controller_test, 'demo_items', "-r=#{@project_dir}") }
         assert_match(/demo_items.rb does not exist/, out)
         assert_match(/padrino g admin_page DemoItem/, out)
         assert_no_file_exists("#{@project_dir}/test/admin/controllers/demo_items_controller_test.rb")
@@ -37,7 +37,7 @@ describe "AdminControllerTests generator" do
         FileUtils.mkdir_p("#{@project_dir}/admin/controllers")
         FileUtils.touch("#{@project_dir}/admin/controllers/demo_items.rb")
 
-        out, err = capture_io { generate(:admin_controller_tests, 'demo_items', "-r=#{@project_dir}") }
+        out, err = capture_io { generate(:admin_controller_test, 'demo_items', "-r=#{@project_dir}") }
         assert_file_exists("#{@project_dir}/test/admin/controllers/demo_items_controller_test.rb")
         assert_match(/test\/admin\/controllers\/demo_items_controller_test.rb/, out)
         assert_match(/Admin controller tests generation for 'demo_items' completed/, out)

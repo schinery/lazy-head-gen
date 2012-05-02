@@ -1,14 +1,14 @@
 module Padrino
   module Generators
 
-    class AdminControllerTests < Thor::Group
+    class AdminControllerTest < Thor::Group
       # register with Padrino
-      Padrino::Generators.add_generator(:admin_controller_tests, self)
+      Padrino::Generators.add_generator(:admin_controller_test, self)
 
       # Define the source template root
       def self.source_root; File.expand_path(File.dirname(__FILE__)); end
       # Defines the banner for this CLI generator
-      def self.banner; "padrino-gen admin_controller_tests [name]"; end
+      def self.banner; "padrino-gen admin_controller_test [name]"; end
 
       # Include related modules
       include Thor::Actions
@@ -17,7 +17,7 @@ module Padrino
       include Padrino::Generators::Runner
       include Padrino::Generators::Components::Actions
 
-      desc "Description:\n\n\tlazy-head-gen admin_controller_tests generates basic tests for an admin controller"
+      desc "Description:\n\n\tlazy-head-gen admin_controller_test generates basic tests for an admin controller"
 
       argument :name, :desc => "The name of your admin controller"
 
@@ -25,7 +25,7 @@ module Padrino
 
       require_arguments!
 
-      def create_admin_controller_tests
+      def create_admin_controller_test
         self.destination_root = options[:root]
 
         if in_app_root?

@@ -32,7 +32,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START POST create
     describe "Post create" do
       before do
-        post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.plan
+        post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.make.attributes
       end
 
       it "should not return the created text" do
@@ -44,7 +44,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START GET edit
     describe "GET edit" do
       before do
-        @<%= @singular %> = <%= @model %>.make
+        @<%= @singular %> = <%= @model %>.make!
         get "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}"
       end
 
@@ -57,8 +57,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START PUT update
     describe "PUT update" do
       before do
-        @<%= @singular %> = <%= @model %>.make
-        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", :<%= @singular %> => <%= @model %>.plan
+        @<%= @singular %> = <%= @model %>.make!
+        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", :<%= @singular %> => <%= @model %>.make.attributes
       end
 
       it "should not return the updated text" do
@@ -70,7 +70,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START DELETE destroy
     describe "on DELETE destroy" do
       before do
-        @<%= @singular %> = <%= @model %>.make
+        @<%= @singular %> = <%= @model %>.make!
         get "/admin/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
       end
 
@@ -87,7 +87,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
   describe "when logged in" do
 
     before do
-      @account = Factory.make_admin
+      @account = Factory.make!_admin
       login_as_admin(@account)
     end
 
@@ -121,7 +121,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     describe "POST create" do
       before do
         @<%= @singular %>_count = <%= @model %>.count
-        post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.plan
+        post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.make.attributes
       end
 
       it "should create a <%= @singular %>" do
@@ -135,7 +135,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START GET edit
     describe "GET edit" do
       before do
-        @<%= @singular %> = <%= @model %>.make
+        @<%= @singular %> = <%= @model %>.make!
         get "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}"
       end
 
@@ -149,15 +149,15 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START PUT update
     describe "PUT update" do
       before do
-        @<%= @singular %> = <%= @model %>.make
+        @<%= @singular %> = <%= @model %>.make!
         @<%= @singular %>_count = <%= @model %>.count
-        @<%= @singular %>_hash = <%= @model %>.plan
+        @<%= @singular %>_hash = {}
 
-        key_and_value = get_key_and_value(@product)
+        key_and_value = get_key_and_value(@singular)
         if key_and_value[0] and key_and_value[1]
           @key = key_and_value[0]
           @value = key_and_value[1]
-          @<%= @singular %>_hash = <%= @model %>.plan(@key => @value)
+          @<%= @singular %>_hash = <%= @model %>.make(@key => @value).attributes
         end
 
         put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", :<%= @singular %> => @<%= @singular %>_hash
@@ -179,7 +179,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START DELETE destroy
     describe "DELETE destroy" do
       before do
-        @<%= @singular %> = <%= @model %>.make
+        @<%= @singular %> = <%= @model %>.make!
         @<%= @singular %>_count = <%= @model %>.count
         delete "/admin/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
       end
