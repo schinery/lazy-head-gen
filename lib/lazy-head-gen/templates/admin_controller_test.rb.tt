@@ -87,7 +87,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
   describe "when logged in" do
 
     before do
-      @account = Factory.make!_admin
+      @account = Factory.make_admin
       login_as_admin(@account)
     end
 
@@ -153,7 +153,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
         @<%= @singular %>_count = <%= @model %>.count
         @<%= @singular %>_hash = {}
 
-        key_and_value = get_key_and_value(@singular)
+        key_and_value = get_key_and_value(<%= @singular %>)
         if key_and_value[0] and key_and_value[1]
           @key = key_and_value[0]
           @value = key_and_value[1]
