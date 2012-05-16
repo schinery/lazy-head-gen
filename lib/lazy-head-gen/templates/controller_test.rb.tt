@@ -47,7 +47,7 @@ describe "<%= @controller if @controller %>Controller" do
     end
 
     it "should return the create text" do
-      assert_match "This is the create action", last_response.body
+      assert_match "This is the create action", body
     end
   end
   # END POST create
