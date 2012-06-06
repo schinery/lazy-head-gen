@@ -6,11 +6,11 @@ source "http://rubygems.org"
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
-  gem "shoulda", ">= 0"
-  gem "bundler", "~> 1.1.3"
+  gem "minitest", ">= 0"
+  gem "bundler"
   gem "jeweler", "~> 1.6.4"
-  gem "simplecov", :require => false
-  gem "rdoc"
+  gem "simplecov"
+  gem 'turn', "~> 0.9.5"
 
   # From Padrino Framework
   if ENV['SINATRA_EDGE']
@@ -41,7 +41,6 @@ group :development do
     gem "jruby-openssl"
   end
   gem "mocha",    "~>0.10.0"
-  gem "minitest", "~>2.6.0"
   gem "lumberjack"
 
   gem 'ruby-debug'
