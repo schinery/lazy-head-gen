@@ -17,7 +17,7 @@ describe "<%= @controller if @controller %>Controller" do
   # START GET show
   describe "GET show" do
     before do
-      @<%= @singular %> = <%= @model %>.make
+      @<%= @singular %> = <%= @model %>.make!
       get "/<%= @pluralized %>/show/#{@<%= @singular %>.to_param}"
     end
 
@@ -43,11 +43,17 @@ describe "<%= @controller if @controller %>Controller" do
   # START POST create
   describe "Post create" do
     before do
-      post "/<%= @pluralized %>/create", {}
+      @count = <%= @model %>.count
+      post "/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.make.attributes
     end
 
-    it "should return the create text" do
-      assert_match "This is the create action", body
+    it "should redirect to the show page" do
+      assert_equal 302, status
+      assert location.include?("/<%= @pluralized %>/show/")
+    end
+
+    it "should create a new <%= @singular %>" do
+      assert_equal @count + 1, <%= @model %>.count
     end
   end
   # END POST create
@@ -55,7 +61,7 @@ describe "<%= @controller if @controller %>Controller" do
   # START GET edit
   describe "GET edit" do
     before do
-      @<%= @singular %> = <%= @model %>.make
+      @<%= @singular %> = <%= @model %>.make!
       get "/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}"
     end
 
@@ -68,12 +74,20 @@ describe "<%= @controller if @controller %>Controller" do
   # START PUT update
   describe "PUT update" do
     before do
-      @<%= @singular %> = <%= @singular %>.make
-      put "/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", {}
+      @<%= @singular %> = <%= @model %>.make!
+      @count = <%= @model %>.count
+      put "/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", :<%= @singular %> => <%= @model %>.make.attributes
+      @updated_<%= @singular %> = <%= @model %>.find(@<%= @singular %>.to_param)
     end
 
-    it "should return the update text" do
-      assert_match "This is the update action", body
+    it "should redirect to the show page" do
+      assert_equal 302, status
+      assert location.include?("/<%= @pluralized %>/show/")
+    end
+
+    it "should not create a new <%= @singular %>" do
+      assert_equal @count, <%= @model %>.count
+      assert_equal @updated_<%= @singular %>.id, @<%= @singular %>.id
     end
   end
   # END PUT update
@@ -81,12 +95,17 @@ describe "<%= @controller if @controller %>Controller" do
   # START DELETE destroy
   describe "on DELETE destroy" do
     before do
-      @<%= @singular %> = <%= @singular %>.make
-      get "/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
+      @<%= @singular %> = <%= @model %>.make!
+      @count = <%= @model %>.count
+      delete "/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
     end
 
-    it "should return a status of 405" do
-      assert_equal 405, status
+    it "should redirect to the index page" do
+      assert_equal 302, status
+    end
+
+    it "should delete the <%= @singular %>" do
+      assert_equal(@count - 1, <%= @model %>.count)
     end
   end
   # END DELETE destroy

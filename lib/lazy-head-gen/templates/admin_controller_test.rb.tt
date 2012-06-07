@@ -12,7 +12,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should not display the <%= @pluralized %> index page" do
-        assert_not_logged_in
+        assert_admin_not_logged_in
       end
     end
     # END GET index
@@ -24,7 +24,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should not display the <%= @pluralized %> new page" do
-        assert_not_logged_in
+        assert_admin_not_logged_in
       end
     end
     # END GET new
@@ -36,7 +36,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should not return the created text" do
-        assert_not_logged_in
+        assert_admin_not_logged_in
       end
     end
     # END POST create
@@ -49,7 +49,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should not display the <%= @pluralized %> edit page" do
-        assert_not_logged_in
+        assert_admin_not_logged_in
       end
     end
     # END GET edit
@@ -62,7 +62,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should not return the updated text" do
-        assert_not_logged_in
+        assert_admin_not_logged_in
       end
     end
     # END PUT update
@@ -75,7 +75,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should not return the destroyed text" do
-        assert_destroy_not_logged_in
+        assert_admin_destroy_not_logged_in
       end
     end
     # END DELETE destroy
@@ -98,7 +98,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should display the <%= @pluralized %> index page" do
-        assert_logged_in
+        assert ok?
+        assert_equal 200, status
         assert_equal "/admin/<%= @pluralized %>", path
       end
     end
@@ -111,7 +112,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should display the <%= @pluralized %> new page" do
-        assert_logged_in
+        assert ok?
+        assert_equal 200, status
         assert_equal "/admin/<%= @pluralized %>/new", path
       end
     end
@@ -124,9 +126,12 @@ describe "Admin::<%= @controller if @controller %>Controller" do
         post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.make.attributes
       end
 
+      it "should redirect to the edit page" do
+        assert_equal status, 302
+        assert location.include?("/admin/<%= @pluralized %>/edit/#{<%= @model %>.last.to_param}")
+      end
+
       it "should create a <%= @singular %>" do
-        assert_equal 302, status
-        assert location.include?("/admin/<%= @pluralized %>/edit/")
         assert_equal @<%= @singular %>_count + 1, <%= @model %>.count
       end
     end
@@ -140,7 +145,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should display the <%= @pluralized %> edit page" do
-        assert_logged_in
+        assert ok?
+        assert_equal 200, status
         assert_equal "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}", path
       end
     end
@@ -151,27 +157,18 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       before do
         @<%= @singular %> = <%= @model %>.make!
         @<%= @singular %>_count = <%= @model %>.count
-        @<%= @singular %>_hash = {}
-
-        key_and_value = get_key_and_value(@<%= @singular %>)
-        if key_and_value[0] and key_and_value[1]
-          @key = key_and_value[0]
-          @value = key_and_value[1]
-          @<%= @singular %>_hash = <%= @model %>.make(@key => @value).attributes
-        end
-
-        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", :<%= @singular %> => @<%= @singular %>_hash
-
+        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}"
         @updated_<%= @singular %> = <%= @model %>.find(@<%= @singular %>.to_param)
       end
 
-      it "should update a <%= @singular %>" do
+      it "should redirect to the edit page" do
         assert_equal status, 302
         assert location.include?("/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}")
+      end
+
+      it "should update a <%= @singular %>" do
         assert_equal @updated_<%= @singular %>.id, @<%= @singular %>.id
         assert_equal @<%= @singular %>_count, <%= @model %>.count
-        # Only assert if the <%= @singular %> has a key other than id or timestamps
-        assert_equal @updated_<%= @singular %>.attributes[@key], @value if @key and @value
       end
     end
     # END PUT update
@@ -184,8 +181,11 @@ describe "Admin::<%= @controller if @controller %>Controller" do
         delete "/admin/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
       end
 
-      it "should destroy a <%= @singular %>" do
+      it "should redirect to the index page" do
         assert_equal 302, status
+      end
+
+      it "should destroy a <%= @singular %>" do
         assert_equal @<%= @singular %>_count - 1, <%= @model %>.count
       end
     end

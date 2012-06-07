@@ -7,10 +7,12 @@ source "http://rubygems.org"
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem "minitest", ">= 0"
+  gem 'turn', "~> 0.9.5"
   gem "bundler"
   gem "jeweler", "~> 1.6.4"
-  gem "simplecov"
-  gem 'turn', "~> 0.9.5"
+  gem "yard", "~> 0.6.0"
+  # gem 'ruby-debug'
+  # gem "simplecov"
 
   # From Padrino Framework
   if ENV['SINATRA_EDGE']
@@ -22,7 +24,6 @@ group :development do
   gem "grit",      ">= 2.4.1"
   gem "rack",      ">= 1.3.0"
   gem "rake",      ">= 0.8.7"
-  gem "yard",      ">= 0.7.2"
   gem "rack-test", ">= 0.5.0"
   gem "fakeweb",   ">= 1.2.8"
   gem "webrat",    ">= 0.5.1"
@@ -42,8 +43,6 @@ group :development do
   end
   gem "mocha",    "~>0.10.0"
   gem "lumberjack"
-
-  gem 'ruby-debug'
 end
 
 gem 'padrino'
