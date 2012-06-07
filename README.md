@@ -19,6 +19,8 @@ gem 'lazy-head-gen', :group => [:development, :test]
 Padrino gotcha: You'll need to put the `gem 'lazy-head-gen'` requirement *after* `gem 'padrino'` in your Gemfile.
 Lazy Head Gen needs Padrino loaded before it can work.
 
+Also you will need to add this gem for both :development and :test groups. This is because there are a couple of added test helper functions and assertions used by the output from the generators.
+
 ## Usage
 
 There are currently 2 extra generators, scaffold and admin_controller_tests.
