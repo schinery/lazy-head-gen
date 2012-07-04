@@ -41,7 +41,7 @@ module Padrino
           controller_path = destination_root("admin", "controllers", "#{@pluralized}.rb")
 
           if File.exist?(controller_path)
-            template "templates/admin_controller_test.rb.tt", destination_root("test", "admin", "controllers", "#{@pluralized}_controller_test.rb")
+            template "templates/admin_controller_test/admin_controller_test.rb.tt", destination_root("test", "admin", "controllers", "#{@pluralized}_controller_test.rb")
           else
             say "The controller '#{controller_path} does not exist, please run 'padrino g admin_page #{@model}' to create the initial admin controller", :red
             return

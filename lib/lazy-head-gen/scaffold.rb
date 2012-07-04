@@ -74,13 +74,13 @@ module Padrino
           # model_path = options[:model_path]
           model_path = "."
 
-          template "templates/model.rb.tt", destination_root(model_path, "models", "#{@singular}.rb")
-          template "templates/model_test.rb.tt", destination_root("test", model_path, "models", "#{@singular}_test.rb")
+          template "templates/scaffold/model.rb.tt", destination_root(model_path, "models", "#{@singular}.rb")
+          template "templates/scaffold/model_test.rb.tt", destination_root("test", model_path, "models", "#{@singular}_test.rb")
 
           # Create controller
-          template "templates/controller.rb.tt", destination_root(app, "controllers", "#{@pluralized}.rb")
-          template "templates/controller_test.rb.tt", destination_root("test", app, "controllers", "#{@pluralized}_controller_test.rb")
-          template "templates/helper.rb.tt", destination_root(app, "helpers", "#{@pluralized}_helper.rb")
+          template "templates/scaffold/controller.rb.tt", destination_root(app, "controllers", "#{@pluralized}.rb")
+          template "templates/scaffold/controller_test.rb.tt", destination_root("test", app, "controllers", "#{@pluralized}_controller_test.rb")
+          template "templates/scaffold/helper.rb.tt", destination_root(app, "helpers", "#{@pluralized}_helper.rb")
 
           # Create views
           views = ["index", "show"]
@@ -90,7 +90,7 @@ module Padrino
 
           views.each do |view|
             @view = view
-            template "templates/view.erb.tt", destination_root(app, "views", "#{@pluralized}", "#{@view}.erb")
+            template "templates/scaffold/view.erb.tt", destination_root(app, "views", "#{@pluralized}", "#{@view}.erb")
           end
 
           # Create a migration unless skipped
@@ -98,7 +98,7 @@ module Padrino
 
           # Check if blueprints file exists and copy into place if not
           if !File.exist?(destination_root("test", "blueprints.rb"))
-            template "templates/blueprints.rb.tt", destination_root("test", "blueprints.rb")
+            template "templates/scaffold/blueprints.rb.tt", destination_root("test", "blueprints.rb")
           end
 
           # Insert into text_config.rb require blueprints.rb
