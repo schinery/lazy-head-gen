@@ -1,9 +1,6 @@
 ENV['PADRINO_ENV'] = 'test'
 PADRINO_ROOT = File.dirname(__FILE__) unless defined? PADRINO_ROOT
 
-# require 'simplecov'
-# SimpleCov.start
-
 require File.expand_path('../load_paths', __FILE__)
 require 'minitest/autorun'
 require 'rack/test'
@@ -13,9 +10,8 @@ require 'thor/group'
 require 'padrino-core/support_lite' unless defined?(SupportLite)
 require 'padrino-admin'
 require File.dirname(__FILE__) + '/../lib/lazy-head-gen.rb'
-
+require 'debugger'
 begin; require 'turn/autorun'; rescue LoadError; end
-# require 'ruby-debug'
 
 Padrino::Generators.load_components!
 

@@ -11,8 +11,6 @@ group :development do
   gem "bundler"
   gem "jeweler", "~> 1.6.4"
   gem "yard", "~> 0.6.0"
-  # gem 'ruby-debug'
-  # gem "simplecov"
 
   # From Padrino Framework
   if ENV['SINATRA_EDGE']

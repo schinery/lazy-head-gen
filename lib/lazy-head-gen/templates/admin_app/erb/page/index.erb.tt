@@ -1,0 +1,41 @@
+<div class="subnav">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <%%= link_to pat(:list), url(:<%= @orm.name_plural %>, :index) %>
+    </li>
+    <li>
+      <%%= link_to pat(:new), url(:<%= @orm.name_plural %>, :new) %>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="page-header">
+      <h2><%%= pat(:all) %> <%%= mt(:<%= @orm.name_plural %>) %></h2>
+    </div>
+
+    <table class="table table-striped">
+      <tr>
+        <%- @orm.columns.each_with_index do |column, i| -%>
+        <th<%= " class=\"first\"" if i==0 %>><%%= mat(:<%= @orm.name_singular %>, :<%= column.name %>) %></th>
+        <%- end -%>
+        <th>&nbsp;</th>
+      </tr>
+      <%% @<%= @orm.name_plural %>.each do |<%= @orm.name_singular %>| %>
+      <tr>
+        <%- @orm.columns.each_with_index do |column, i| -%>
+        <td<%= " class=\"first\"" if i==0 %>><%%= <%= @orm.name_singular %>.<%= column.name %> %></td>
+        <%- end -%>
+        <td>
+          <span class="pull-right">
+            <%%= link_to pat(:edit), url(:<%= @orm.name_plural %>, :edit, :id => <%= @orm.name_singular %>.id), :class => "btn btn-primary" %>
+            <%%= link_to pat(:delete), url(:<%= @orm.name_plural %>, :destroy, :id => <%= @orm.name_singular %>.id), :method => :delete, :confirm => "Are you sure?", :class => "btn btn-danger" %>
+          </span>
+        </td>
+      </tr>
+      <%% end %>
+    </table>
+
+  </div>
+</div>

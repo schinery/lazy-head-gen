@@ -38,6 +38,7 @@ module Padrino
       class_option :skip_migration, :aliases => "-s", :default => false, :type => :boolean,
         :desc => "Specify whether to skip generating a migration"
 
+      # Show help if no argv given
       require_arguments!
 
       def create_scaffold

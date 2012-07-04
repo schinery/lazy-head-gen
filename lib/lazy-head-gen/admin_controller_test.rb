@@ -23,6 +23,7 @@ module Padrino
 
       class_option :root, :desc => "The root destination", :aliases => '-r', :default => ".", :type => :string
 
+      # Show help if no argv given
       require_arguments!
 
       def create_admin_controller_test

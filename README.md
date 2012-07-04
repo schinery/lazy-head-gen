@@ -23,8 +23,6 @@ Also you will need to add this gem for both :development and :test groups. This 
 
 ## Usage
 
-There are currently 2 extra generators, scaffold and admin_controller_tests.
-
 ### Scaffold Generator
 
 To generate a new scaffold:
@@ -68,6 +66,14 @@ padrino g admin_controller_tests products
 ```
 
 This will generate a fully tested admin controller test for the 6 CRUD routes of a standard Padrino admin controller.
+
+### Bootstrapped Admin Generator
+
+TODO: write about this
+
+### Bootstrapped Admin Page Generator
+
+TODO: write about this
 
 ## Extras
 

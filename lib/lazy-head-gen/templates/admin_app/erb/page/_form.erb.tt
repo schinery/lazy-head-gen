@@ -1,0 +1,16 @@
+<fieldset>
+  <% @orm.column_fields.each do |column| %>
+  <div class="control-group">
+    <%%= f.label :<%= column[:name] %>, :class => "control-label" %>
+    <div class="controls">
+      <%%= f.<%= column[:field_type] %> :<%= column[:name] %>, :class => :<%= column[:field_type] %> %>
+      <span class="help-block">Ex: a simple text</span>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="form-actions">
+    <%%= f.submit pat(:save), :class => "btn btn-primary" %>
+    <%%= f.submit pat(:cancel), :onclick => "window.location='#{url(:<%= @orm.name_plural %>, :index)}';return false", :class => "btn" %>
+  </div>
+</fieldset>

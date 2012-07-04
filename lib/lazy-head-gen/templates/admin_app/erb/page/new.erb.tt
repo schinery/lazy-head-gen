@@ -1,0 +1,23 @@
+<div class="subnav">
+  <ul class="nav nav-tabs">
+    <li>
+      <%%= link_to pat(:list), url(:<%= @orm.name_plural %>, :index) %>
+    </li>
+    <li class="active">
+      <%%= link_to pat(:new), url(:<%= @orm.name_plural %>, :new) %>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="page-header">
+      <h2><%%= pat(:new) %> <%%= mt(:<%= @orm.name_singular %>) %></h2>
+    </div>
+
+    <%% form_for :<%= @orm.name_singular %>, url(:<%= @orm.name_plural %>, :create), :class => "form-horizontal" do |f| %>
+      <%%= partial "<%= @orm.name_plural %>/form", :locals => { :f => f } %>
+    <%% end %>
+
+  </div>
+</div>
