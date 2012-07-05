@@ -10,7 +10,7 @@ require 'thor/group'
 require 'padrino-core/support_lite' unless defined?(SupportLite)
 require 'padrino-admin'
 require File.dirname(__FILE__) + '/../lib/lazy-head-gen.rb'
-require 'debugger'
+
 begin; require 'turn/autorun'; rescue LoadError; end
 
 Padrino::Generators.load_components!

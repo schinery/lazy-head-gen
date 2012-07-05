@@ -1,8 +1,6 @@
 require 'machinist/active_record'
 require 'faker'
 
-# START blueprints
-
 Account.blueprint do
   name { Faker::Name.first_name }
   surname { Faker::Name.last_name }
@@ -11,6 +9,3 @@ Account.blueprint do
   password_confirmation { "password" }
   role { "admin" }
 end
-
-
-# END blueprints

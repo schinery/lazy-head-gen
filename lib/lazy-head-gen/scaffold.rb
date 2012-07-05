@@ -19,7 +19,7 @@ module Padrino
 
       desc "Description:\n\n\tpadrino g scaffold - Generates a fully tested Padrino resource scaffold"
 
-      argument :name, :desc => "The name of your scaffold resource"
+      argument :name, :desc => "The name of your scaffold resource", :type => :string
 
       argument :properties, :desc => "The properties of the scaffold's model", :type => :array, :default => []
 
@@ -133,14 +133,14 @@ module Padrino
 
             # Format the blueprint entry
             model_blueprint = <<-MODEL
+
 #{@model}.blueprint do
 #{props}
 end
-
             MODEL
 
-            # Insert into blueprints.rb
-            insert_into_file destination_root("test", "blueprints.rb"), model_blueprint, :before => "# END blueprints"
+            # Append blueprints.rb
+            append_file destination_root("test", "blueprints.rb"), model_blueprint
           else
             say "Blueprints entry already exists for '#{@singular}'", :yellow
           end

@@ -19,7 +19,7 @@ module Padrino
 
       desc "Description:\n\n\tpadrino g admin_controller_test - Generates basic tests for an admin controller"
 
-      argument :name, :desc => "The name of your admin controller"
+      argument :name, :desc => "The name of your admin controller", :type => :string
 
       class_option :root, :desc => "The root destination", :aliases => '-r', :default => ".", :type => :string
 

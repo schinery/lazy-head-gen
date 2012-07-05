@@ -123,7 +123,7 @@ padrino g scaffold [name]
 padrino g scaffold Product title:string summary:text quantity:integer available_from:datetime display:boolean -c
 ```
 
-## Extras
+## Tests
 
 ### Built in assertions and test helpers
 
@@ -131,12 +131,11 @@ TODO: Write about these
 
 ### blueprints.rb
 
-If you already have a blueprints.rb file, the scaffold generator looks for *# END blueprints* as a marker to insert the generated models blueprint. This is a bit... well crap... but I currently haven't thought of another way to do it.
+The scaffold and admin_controller_test generators are reliant on you using a blueprints.rb file.
 
 ## To Do List
 
 * Finish README - Built in assertions and test helpers
-* See if there is a better way to do the blueprint inserts
 * Add form output to the scaffold generator
 
 ## Contributing to lazy-head-gen
