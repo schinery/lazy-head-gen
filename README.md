@@ -23,58 +23,6 @@ Also you will need to add this gem for both :development and :test groups. There
 
 ## Usage
 
-### Bootstrapped Admin Generator
-
-Generates a new Padrino Admin application with Twitter Bootstrapped integrated.
-
-**Usage:**
-
-```
-padrino g bootstrapped_admin
-```
-
-**Options:**
-
--r, [--root=ROOT] The root destination. Default: .
-
--s, [--skip-migration]
-
--d, [--destroy]
-
--m, [--admin-model=ADMIN_MODEL] The name of model for access controlling. Default: Account
-
--a, [--app=APP] The model destination path. Default: .
-
-**Example:**
-
-```
-padrino g bootstrapped_admin
-```
-
-### Bootstrapped Admin Page Generator
-
-Generates a new Padrino Admin page with Twitter Bootstrapped integrated.
-
-**Usage:**
-
-```
-padrino g bootstrapped_admin_page [model]
-```
-
-**Options:**
-
--r, [--root=ROOT] The root destination.
-
--s, [--skip-migration]
-
--d, [--destroy]
-
-**Example:**
-
-```
-padrino g bootstrapped_admin_page product
-```
-
 ### Admin Controller Tests Generator
 
 Generates a fully tested admin controller test for the 6 CRUD actions of a standard Padrino admin controller.
