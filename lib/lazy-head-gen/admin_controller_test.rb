@@ -8,7 +8,7 @@ module Padrino
       # Define the source template root
       def self.source_root; File.expand_path(File.dirname(__FILE__)); end
       # Defines the banner for this CLI generator
-      def self.banner; "padrino-gen admin_controller_test [name]"; end
+      def self.banner; "padrino g admin_controller_test [name]"; end
 
       # Include related modules
       include Thor::Actions
@@ -17,7 +17,7 @@ module Padrino
       include Padrino::Generators::Runner
       include Padrino::Generators::Components::Actions
 
-      desc "Description:\n\n\tlazy-head-gen admin_controller_test generates basic tests for an admin controller"
+      desc "Description:\n\n\tpadrino g admin_controller_test - Generates basic tests for an admin controller"
 
       argument :name, :desc => "The name of your admin controller"
 

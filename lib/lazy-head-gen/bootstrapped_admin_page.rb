@@ -12,14 +12,14 @@ module Padrino
       # Define the source template root
       def self.source_root; File.expand_path(File.dirname(__FILE__)); end
       # Defines the "banner" text for the CLI.
-      def self.banner; "padrino-gen bootstrapped_admin_page [model]"; end
+      def self.banner; "padrino g bootstrapped_admin_page [model]"; end
 
       # Include related modules
       include Thor::Actions
       include Padrino::Generators::Actions
       include Padrino::Generators::Admin::Actions
 
-      desc "Description:\n\n\tpadrino-gen bootstrapped_admin_page model(s) generates a new Padrino Admin page with Twitter Bootstrapped integrated"
+      desc "Description:\n\n\tpadrino g bootstrapped_admin_page [model(s)] - Generates a new Padrino Admin page with Twitter Bootstrapped integrated"
 
       argument :models, :desc => "The name(s) of your model(s)", :type => :array
 

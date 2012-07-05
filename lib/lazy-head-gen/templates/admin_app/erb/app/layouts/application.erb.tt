@@ -62,7 +62,7 @@
     </div>
 
     <div class="container">
-      <%%= [:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join %>
+      <%%= [:error, :warning, :notice, :info].map { |type| flash_tag(type, :class => "alert alert-#{bootstrap_alert_for(type)}") }.join %>
 
       <%%= yield %>
 

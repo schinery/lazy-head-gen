@@ -1,6 +1,6 @@
 begin
   require 'padrino-gen'
-  Padrino::Generators.load_paths << Dir[File.dirname(__FILE__) + '/lazy-head-gen/{admin_controller_test,scaffold,actions,orm,bootstrapped_admin_app,bootstrapped_admin_page}.rb']
+  Padrino::Generators.load_paths << Dir[File.dirname(__FILE__) + '/lazy-head-gen/{bootstrapped_admin_app,bootstrapped_admin_page,admin_controller_test,scaffold}.rb']
 rescue LoadError
   # Fail silently
 end

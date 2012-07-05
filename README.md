@@ -1,8 +1,8 @@
 # lazy-head-gen
 
-Lazy Head Gen provides a couple of extra generators for the excellent [Padrino](https://github.com/padrino/padrino-framework) framework.
+lazy-head-gen provides some extra generators for the excellent [Padrino](https://github.com/padrino/padrino-framework) framework.
 
-It is assuming that you are using ActiveRecord and MiniTest, as that is the options we normally use when developing at [Head](http://www.headlondon.com).
+It is assuming that you are using ActiveRecord and MiniTest, as that is the options we normally use in our development at [Head](http://www.headlondon.com).
 
 ## Installation
 
@@ -17,63 +17,111 @@ gem 'lazy-head-gen', :group => [:development, :test]
 ```
 
 Padrino gotcha: You'll need to put the `gem 'lazy-head-gen'` requirement *after* `gem 'padrino'` in your Gemfile.
-Lazy Head Gen needs Padrino loaded before it can work.
+lazy-head-gen depends on Padrino being loaded before it can do it's stuff.
 
-Also you will need to add this gem for both :development and :test groups. This is because there are a couple of added test helper functions and assertions used by the output from the generators.
+Also you will need to add this gem for both :development and :test groups. There are a few bundled in test helper functions and assertions used by the test files outputted from the generators.
 
 ## Usage
 
-### Scaffold Generator
+### Bootstrapped Admin Generator
 
-To generate a new scaffold:
+Generates a new Padrino Admin application with Twitter Bootstrapped integrated.
 
-```
-padrino g scaffold ModelName property:type
-```
-
-For example to generate a scaffold for Products:
+**Usage:**
 
 ```
-padrino g scaffold Product title:string summary:text quantity:integer available_from:datetime display:boolean
+padrino g bootstrapped_admin
 ```
 
-This will generate the following:
+**Options:**
 
-* A controller, helper and controller test for Products
-* An index and show view for Products
-* A model, model test and database migration for Product
-* A blueprints file if one doesn't exist
+-r, [--root=ROOT] The root destination. Default: .
 
-It will also add:
+-s, [--skip-migration]
 
-* A reference to blueprints.rb to test_config.rb if required
-* Add a Product blueprint and it's properties to the blueprints.rb file
+-d, [--destroy]
+
+-m, [--admin-model=ADMIN_MODEL] The name of model for access controlling. Default: Account
+
+-a, [--app=APP] The model destination path. Default: .
+
+**Example:**
+
+```
+padrino g bootstrapped_admin
+```
+
+### Bootstrapped Admin Page Generator
+
+Generates a new Padrino Admin page with Twitter Bootstrapped integrated.
+
+**Usage:**
+
+```
+padrino g bootstrapped_admin_page [model]
+```
+
+**Options:**
+
+-r, [--root=ROOT] The root destination.
+
+-s, [--skip-migration]
+
+-d, [--destroy]
+
+**Example:**
+
+```
+padrino g bootstrapped_admin_page product
+```
 
 ### Admin Controller Tests Generator
 
-To generate a new admin controller test:
+Generates a fully tested admin controller test for the 6 CRUD actions of a standard Padrino admin controller.
+
+**Usage:**
 
 ```
-padrino g admin_controller_tests ControllerName
+padrino g admin_controller_test [name]
 ```
 
-Controller name should be the name of an existing admin controller.
+**Options:**
 
-For example to generate an admin controller test for products:
+-r, [--root=ROOT] The root destination. Default: .
+
+**Example:**
 
 ```
 padrino g admin_controller_tests products
 ```
 
-This will generate a fully tested admin controller test for the 6 CRUD routes of a standard Padrino admin controller.
+### Scaffold Generator
 
-### Bootstrapped Admin Generator
+Generates a fully tested Padrino resource scaffold
 
-TODO: write about this
+**Usage:**
 
-### Bootstrapped Admin Page Generator
+```
+padrino g scaffold [name]
+```
 
-TODO: write about this
+**Options:**
+
+-r, [--root=ROOT] The root destination. Default: .
+
+-s, [--skip-migration] Specify whether to skip generating a migration
+
+-a, [--app-path=APP_PATH] The application destination path. Default: /app
+
+-m, [--model-path=MODEL_PATH] he model destination path. Default: .
+
+-c, [--create-full-actions] Specify whether to generate basic (index and show) or full (index, show, new, create, edit, update and delete) actions.
+
+**Example:**
+
+```
+padrino g scaffold Product title:string summary:text quantity:integer available_from:datetime display:boolean -c
+```
 
 ## Extras
 
@@ -87,8 +135,9 @@ If you already have a blueprints.rb file, the scaffold generator looks for *# EN
 
 ## To Do List
 
-* Finish README
+* Finish README - Built in assertions and test helpers
 * See if there is a better way to do the blueprint inserts
+* Add form output to the scaffold generator
 
 ## Contributing to lazy-head-gen
 

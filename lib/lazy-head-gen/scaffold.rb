@@ -8,7 +8,7 @@ module Padrino
       # Define the source template root
       def self.source_root; File.expand_path(File.dirname(__FILE__)); end
       # Defines the banner for this CLI generator
-      def self.banner; "padrino-gen scaffold [name]"; end
+      def self.banner; "padrino g scaffold [name]"; end
 
       # Include related modules
       include Thor::Actions
@@ -17,7 +17,7 @@ module Padrino
       include Padrino::Generators::Runner
       include Padrino::Generators::Components::Actions
 
-      desc "Description:\n\n\tlazy-head-gen scaffold generates a new Padrino scaffold"
+      desc "Description:\n\n\tpadrino g scaffold - Generates a fully tested Padrino resource scaffold"
 
       argument :name, :desc => "The name of your scaffold resource"
 

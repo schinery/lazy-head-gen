@@ -11,16 +11,14 @@ module Padrino
       # Define the source template root and themes.
       def self.source_root; File.expand_path(File.dirname(__FILE__)); end
       # Defines the "banner" text for the CLI.
-      def self.banner; "padrino-gen bootstrapped_admin"; end
-      # Defines the theme names for admin based on available.
-      # def self.themes; Dir[File.dirname(__FILE__) + "/templates/admin_app/assets/stylesheets/themes/*"].map { |t| File.basename(t) }.sort; end
+      def self.banner; "padrino g bootstrapped_admin"; end
 
       # Include related modules
       include Thor::Actions
       include Padrino::Generators::Actions
       include Padrino::Generators::Admin::Actions
 
-      desc "Description:\n\n\tpadrino-gen bootstrapped_admin generates a new Padrino Admin application with Twitter Bootstrapped integrated"
+      desc "Description:\n\n\tpadrino g bootstrapped_admin - Generates a new Padrino Admin application with Twitter Bootstrapped integrated"
 
       class_option :skip_migration, :aliases => "-s", :default => false, :type => :boolean
 
