@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "lazy-head-gen"
-  s.version = "0.3.4"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Chinery"]
@@ -27,39 +27,7 @@ Gem::Specification.new do |s|
     "lazy-head-gen.gemspec",
     "lib/lazy-head-gen.rb",
     "lib/lazy-head-gen/admin_controller_test.rb",
-    "lib/lazy-head-gen/bootstrapped_admin_app.rb",
-    "lib/lazy-head-gen/bootstrapped_admin_page.rb",
     "lib/lazy-head-gen/scaffold.rb",
-    "lib/lazy-head-gen/templates/admin_app/account/activerecord.rb.tt",
-    "lib/lazy-head-gen/templates/admin_app/account/seeds.rb.tt",
-    "lib/lazy-head-gen/templates/admin_app/app.rb.tt",
-    "lib/lazy-head-gen/templates/admin_app/app/controllers/base.rb",
-    "lib/lazy-head-gen/templates/admin_app/app/controllers/sessions.rb.tt",
-    "lib/lazy-head-gen/templates/admin_app/app/helpers/application_helper.rb",
-    "lib/lazy-head-gen/templates/admin_app/assets/css/bootstrap-responsive.css",
-    "lib/lazy-head-gen/templates/admin_app/assets/css/bootstrap-responsive.min.css",
-    "lib/lazy-head-gen/templates/admin_app/assets/css/bootstrap.css",
-    "lib/lazy-head-gen/templates/admin_app/assets/css/bootstrap.min.css",
-    "lib/lazy-head-gen/templates/admin_app/assets/ico/apple-touch-icon-114-precomposed.png",
-    "lib/lazy-head-gen/templates/admin_app/assets/ico/apple-touch-icon-144-precomposed.png",
-    "lib/lazy-head-gen/templates/admin_app/assets/ico/apple-touch-icon-57-precomposed.png",
-    "lib/lazy-head-gen/templates/admin_app/assets/ico/apple-touch-icon-72-precomposed.png",
-    "lib/lazy-head-gen/templates/admin_app/assets/ico/favicon.ico",
-    "lib/lazy-head-gen/templates/admin_app/assets/img/glyphicons-halflings-white.png",
-    "lib/lazy-head-gen/templates/admin_app/assets/img/glyphicons-halflings.png",
-    "lib/lazy-head-gen/templates/admin_app/assets/js/bootstrap.js",
-    "lib/lazy-head-gen/templates/admin_app/assets/js/bootstrap.min.js",
-    "lib/lazy-head-gen/templates/admin_app/assets/js/jquery-min.js",
-    "lib/lazy-head-gen/templates/admin_app/assets/js/jquery-ujs.js",
-    "lib/lazy-head-gen/templates/admin_app/assets/js/jquery.js",
-    "lib/lazy-head-gen/templates/admin_app/erb/app/base/index.erb.tt",
-    "lib/lazy-head-gen/templates/admin_app/erb/app/layouts/application.erb.tt",
-    "lib/lazy-head-gen/templates/admin_app/erb/app/sessions/new.erb.tt",
-    "lib/lazy-head-gen/templates/admin_app/erb/page/_form.erb.tt",
-    "lib/lazy-head-gen/templates/admin_app/erb/page/edit.erb.tt",
-    "lib/lazy-head-gen/templates/admin_app/erb/page/index.erb.tt",
-    "lib/lazy-head-gen/templates/admin_app/erb/page/new.erb.tt",
-    "lib/lazy-head-gen/templates/admin_app/page/controller.rb.tt",
     "lib/lazy-head-gen/templates/admin_controller_test/admin_controller_test.rb.tt",
     "lib/lazy-head-gen/templates/scaffold/blueprints.rb.tt",
     "lib/lazy-head-gen/templates/scaffold/controller.rb.tt",
@@ -70,8 +38,6 @@ Gem::Specification.new do |s|
     "lib/lazy-head-gen/templates/scaffold/view.erb.tt",
     "test/helper.rb",
     "test/lazy-head-gen/test_admin_controller_test.rb",
-    "test/lazy-head-gen/test_bootstrapped_admin_app_generator.rb",
-    "test/lazy-head-gen/test_bootstrapped_admin_page_generator.rb",
     "test/lazy-head-gen/test_scaffold.rb",
     "test/load_paths.rb",
     "test/test_lazy-head-gen.rb"
