@@ -141,15 +141,10 @@ TODO: list test helper methods.
 
 The scaffold and admin_controller_test generators are reliant on you using a blueprints.rb file.
 
-## Known Issues (probably loads of unknown!)
-
-* If you generate an admin_controller_test for the admin account controller you end up with 2 failing tests. Other generated admin tests pass.
-
 ## To Do List
 
 * Finish README - Built in assertions and test helpers
 * Add form output to the scaffold generator
-* Figure out why generated test for the Admin Account controller fails.
 
 ## Contributing to lazy-head-gen
 

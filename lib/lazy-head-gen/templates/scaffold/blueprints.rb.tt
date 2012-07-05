@@ -8,4 +8,6 @@ Account.blueprint do
   password { "password" }
   password_confirmation { "password" }
   role { "admin" }
+  # Required if you want to test the Admin Account controller
+  crypted_password { "password" }
 end
