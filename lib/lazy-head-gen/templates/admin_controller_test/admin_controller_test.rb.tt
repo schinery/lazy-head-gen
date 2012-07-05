@@ -127,7 +127,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should redirect to the edit page" do
-        assert_equal status, 302
+        assert_equal 302, status
         assert location.include?("/admin/<%= @pluralized %>/edit/#{<%= @model %>.last.to_param}")
       end
 
@@ -162,7 +162,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should redirect to the edit page" do
-        assert_equal status, 302
+        assert_equal 302, status
         assert location.include?("/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}")
       end
 

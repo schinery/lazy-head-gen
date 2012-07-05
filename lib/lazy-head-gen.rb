@@ -9,6 +9,7 @@ module LazyHeadGen
 
   # Allows testing as a logged in admin user
   #
+  # param [Account] account - The account to attempt login with
   def login_as_admin(account)
     post "/admin/sessions/create", {
       :email => account.email, :password => "password"

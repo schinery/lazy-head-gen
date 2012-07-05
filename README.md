@@ -127,16 +127,29 @@ padrino g scaffold Product title:string summary:text quantity:integer available_
 
 ### Built in assertions and test helpers
 
-TODO: Write about these
+First off you will need to add this line to your test_config.rb file, after you have required boot.rb.
+
+```
+include LazyHeadGen
+```
+
+This will allow you to access the couple of test helpers that are used in the generated tests.
+
+TODO: list test helper methods.
 
 ### blueprints.rb
 
 The scaffold and admin_controller_test generators are reliant on you using a blueprints.rb file.
 
+## Known Issues (probably loads of unknown!)
+
+* If you generate an admin_controller_test for the admin account controller you end up with 2 failing tests. Other generated admin tests pass.
+
 ## To Do List
 
 * Finish README - Built in assertions and test helpers
 * Add form output to the scaffold generator
+* Figure out why generated test for the Admin Account controller fails.
 
 ## Contributing to lazy-head-gen
 
