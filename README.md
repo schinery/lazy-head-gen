@@ -145,6 +145,7 @@ The scaffold and admin_controller_test generators are reliant on you using a blu
 
 * Finish README - Built in assertions and test helpers
 * Add form output to the scaffold generator
+* Add documentation for testing gem dependencies
 
 ## Contributing to lazy-head-gen
 
