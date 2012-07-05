@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "lazy-head-gen"
-  s.version = "0.3.1"
+  s.version = "0.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Chinery"]
   s.date = "2012-07-05"
-  s.description = "lazy-head-gen provides some extra generators for the excellent Padrino framework."
+  s.description = "Lazy Head Gen is simply a couple of extra generators for the excellent Padrino framework."
   s.email = "stuart.chinery@headlondon.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -80,7 +80,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.19"
-  s.summary = "Some extra generators for the excellent Padrino, using ActiveRecord and MiniTest."
+  s.summary = "Some extra generators for the glorious Padrino, using ActiveRecord and MiniTest."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
