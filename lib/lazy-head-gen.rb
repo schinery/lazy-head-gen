@@ -60,20 +60,4 @@ module LazyHeadGen
   def ok?
     last_response.ok?
   end
-
-  # A factory which we can use to build objects which are a bit more complex or
-  # which require special setup which can't be done by Machinist without a bit of
-  # help.
-  #
-  module Factory
-    class << self
-
-      def make_admin
-        account = Account.make!
-        account.save!
-        account
-      end
-
-    end
-  end
 end
