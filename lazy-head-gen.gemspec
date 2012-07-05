@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "lazy-head-gen"
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Chinery"]
-  s.date = "2012-07-04"
+  s.date = "2012-07-05"
   s.description = "Lazy Head Gen is simply a couple of extra generators for the excellent Padrino framework."
   s.email = "stuart.chinery@headlondon.com"
   s.extra_rdoc_files = [
@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     "lib/lazy-head-gen/templates/admin_app/app.rb.tt",
     "lib/lazy-head-gen/templates/admin_app/app/controllers/base.rb",
     "lib/lazy-head-gen/templates/admin_app/app/controllers/sessions.rb.tt",
+    "lib/lazy-head-gen/templates/admin_app/app/helpers/application_helper.rb",
     "lib/lazy-head-gen/templates/admin_app/assets/css/bootstrap-responsive.css",
     "lib/lazy-head-gen/templates/admin_app/assets/css/bootstrap-responsive.min.css",
     "lib/lazy-head-gen/templates/admin_app/assets/css/bootstrap.css",
