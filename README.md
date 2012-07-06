@@ -1,8 +1,8 @@
 # lazy-head-gen
 
-lazy-head-gen provides some extra generators for the excellent [Padrino](https://github.com/padrino/padrino-framework) framework.
+lazy-head-gen provides some extra generators to [Padrino](https://github.com/padrino/padrino-framework).
 
-It is assuming that you are using ActiveRecord and MiniTest, as that is the options we normally use in our development at [Head](http://www.headlondon.com).
+It is currently assuming that you are using ActiveRecord and MiniTest, as that is the options we normally use in our development at [Head](http://www.headlondon.com).
 
 ## Installation
 
@@ -19,7 +19,7 @@ gem 'lazy-head-gen', :group => [:development, :test]
 Padrino gotcha: You'll need to put the `gem 'lazy-head-gen'` requirement *after* `gem 'padrino'` in your Gemfile.
 lazy-head-gen depends on Padrino being loaded before it can do it's stuff.
 
-Also you will need to add this gem for both :development and :test groups. There are a few bundled in test helper functions and assertions used by the test files outputted from the generators.
+Also you will need to add this gem for both :development and :test groups in your Gemfile. There are a few bundled test helper functions and assertions which are used by the test files that are generated.
 
 ## Usage
 
