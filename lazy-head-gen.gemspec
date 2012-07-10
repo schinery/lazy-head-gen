@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "lazy-head-gen"
-  s.version = "0.4.1"
+  s.version = "0.4.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Chinery"]
-  s.date = "2012-07-06"
-  s.description = "Lazy Head Gen is simply a couple of extra generators for the excellent Padrino framework."
+  s.date = "2012-07-10"
+  s.description = "lazy-head-gen adds some extra generators to Padrino. Currently it assumes you are using ActiveRecord and MiniTest."
   s.email = "stuart.chinery@headlondon.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -39,14 +39,13 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/lazy-head-gen/test_admin_controller_test.rb",
     "test/lazy-head-gen/test_scaffold.rb",
-    "test/load_paths.rb",
     "test/test_lazy-head-gen.rb"
   ]
   s.homepage = "http://github.com/sleepingstu/lazy-head-gen"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.19"
-  s.summary = "Some extra generators for the glorious Padrino, using ActiveRecord and MiniTest."
+  s.summary = "Some extra generators for Padrino, using ActiveRecord and MiniTest."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -58,6 +57,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
+      s.add_development_dependency(%q<uuid>, [">= 0"])
     else
       s.add_dependency(%q<padrino>, [">= 0"])
       s.add_dependency(%q<minitest>, [">= 0"])
@@ -65,6 +65,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
+      s.add_dependency(%q<uuid>, [">= 0"])
     end
   else
     s.add_dependency(%q<padrino>, [">= 0"])
@@ -73,6 +74,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<yard>, ["~> 0.6.0"])
+    s.add_dependency(%q<uuid>, [">= 0"])
   end
 end
 
