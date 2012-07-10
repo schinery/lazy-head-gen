@@ -1,8 +1,8 @@
 # lazy-head-gen
 
-lazy-head-gen provides some extra generators to [Padrino](https://github.com/padrino/padrino-framework).
+lazy-head-gen provides some extra generators for the [Padrino](https://github.com/padrino/padrino-framework) framework.
 
-It is currently assuming that you are using ActiveRecord and MiniTest, as that is the options we normally use in our development at [Head](http://www.headlondon.com).
+The generators are hard wired to use ActiveRecord and MiniTest, as that is the options I normally use in development at [Head](http://www.headlondon.com).
 
 ## Installation
 
