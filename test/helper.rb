@@ -1,9 +1,15 @@
 ENV['PADRINO_ENV'] = 'test'
 PADRINO_ROOT = File.dirname(__FILE__) unless defined? PADRINO_ROOT
 
-require File.expand_path('../load_paths', __FILE__)
+if defined?(Gem)
+  gem 'bundler'
+else
+  require 'rubygems'
+end
+require 'bundler/setup'
+
 require 'minitest/autorun'
-require 'rack/test'
+# require 'rack/test'
 require 'rack'
 require 'uuid'
 require 'thor/group'
@@ -30,8 +36,6 @@ end
 #end
 
 class MiniTest::Unit::TestCase
-  include Rack::Test::Methods
-
   # Sets up a Sinatra::Base subclass defined with the block
   # given. Used in setup or individual spec methods to establish
   # the application.

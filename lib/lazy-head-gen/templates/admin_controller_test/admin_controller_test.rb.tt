@@ -32,7 +32,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START POST create
     describe "Post create" do
       before do
-        post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.make.attributes
+        post "/admin/<%= @pluralized %>/create",
+          :<%= @singular %> => <%= @model %>.make.attributes
       end
 
       it "should not return the created text" do
@@ -45,6 +46,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     describe "GET edit" do
       before do
         @<%= @singular %> = <%= @model %>.make!
+
         get "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}"
       end
 
@@ -58,7 +60,9 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     describe "PUT update" do
       before do
         @<%= @singular %> = <%= @model %>.make!
-        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}", :<%= @singular %> => <%= @model %>.make.attributes
+
+        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}",
+          :<%= @singular %> => <%= @model %>.make.attributes
       end
 
       it "should not return the updated text" do
@@ -71,6 +75,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     describe "on DELETE destroy" do
       before do
         @<%= @singular %> = <%= @model %>.make!
+
         get "/admin/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
       end
 
@@ -122,6 +127,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     describe "POST create" do
       before do
         @<%= @singular %>_count = <%= @model %>.count
+
         post "/admin/<%= @pluralized %>/create", :<%= @singular %> => <%= @model %>.make.attributes
       end
 
@@ -156,8 +162,11 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       before do
         @<%= @singular %> = <%= @model %>.make!
         @<%= @singular %>_count = <%= @model %>.count
-        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}"
-        @updated_<%= @singular %> = <%= @model %>.find(@<%= @singular %>.to_param)
+
+        put "/admin/<%= @pluralized %>/update/#{@<%= @singular %>.to_param}",
+          :<%= @singular %> => <%= @model %>.make.attributes
+
+        @<%= @singular %>.reload
       end
 
       it "should redirect to the edit page" do
@@ -165,8 +174,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
         assert location.include?("/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}")
       end
 
-      it "should update a <%= @singular %>" do
-        assert_equal @updated_<%= @singular %>.id, @<%= @singular %>.id
+      it "should not create a new a <%= @singular %>" do
         assert_equal @<%= @singular %>_count, <%= @model %>.count
       end
     end
