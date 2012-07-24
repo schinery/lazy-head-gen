@@ -76,11 +76,11 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       before do
         @<%= @singular %> = <%= @model %>.make!
 
-        get "/admin/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
+        delete "/admin/<%= @pluralized %>/destroy/#{@<%= @singular %>.to_param}"
       end
 
       it "should not return the destroyed text" do
-        assert_admin_destroy_not_logged_in
+        assert_admin_not_logged_in
       end
     end
     # END DELETE destroy

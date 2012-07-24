@@ -26,15 +26,6 @@ module LazyHeadGen
     assert_equal "http://example.org/admin/sessions/new", location
   end
 
-  # Assertions to test when an admin user is not logged in
-  # and trys to call a destroy action
-  #
-  def assert_admin_destroy_not_logged_in
-    assert !ok?
-    assert_equal 405, status
-    assert_nil location
-  end
-
   # Some shorthands for last_request and last_response varibles
   #
   def path
