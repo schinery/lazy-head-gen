@@ -73,7 +73,7 @@ padrino g scaffold Product title:string summary:text quantity:integer available_
 
 ## Tests
 
-### Built in assertions and test helpers
+### assert_admin_not_logged_in test
 
 First off you will need to add this line to your test_config.rb file, after you have required boot.rb.
 
@@ -81,9 +81,19 @@ First off you will need to add this line to your test_config.rb file, after you 
 include LazyHeadGen
 ```
 
-This will allow you to access the couple of test helpers that are used in the generated tests.
+This will allow you to access the assert_admin_not_logged_in test used for the not logged in admin generated tests.
 
-TODO: list test helper methods.
+```
+def assert_admin_not_logged_in
+  assert !last_response.ok?
+  assert_equal 302, last_response.status
+  assert_equal "http://example.org/admin/sessions/new", last_response.original_headers["Location"]
+end
+```
+
+NOTE: As of 0.5.0 the shorthands for path, status etc have been removed. This was as I discovered they conflict with other tests and properties of objects... which is not good.
+
+If you have been using them in your projects you will need to change them to the regular variables, ie last_response.status etc.
 
 ### blueprints.rb
 
@@ -91,7 +101,6 @@ The scaffold and admin_controller_test generators are reliant on you using a blu
 
 ## To Do List
 
-* Finish README - Built in assertions and test helpers
 * Add form output to the scaffold generator
 * Add documentation for testing gem dependencies
 
