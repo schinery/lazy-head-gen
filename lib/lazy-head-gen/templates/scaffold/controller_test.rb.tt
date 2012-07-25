@@ -48,7 +48,7 @@ describe "<%= @controller if @controller %>Controller" do
     end
 
     it "should redirect to the show page" do
-      assert_equal 302, status
+      assert_equal 302, last_response.status
       assert location.include?("/<%= @pluralized %>/show/")
     end
 
@@ -81,7 +81,7 @@ describe "<%= @controller if @controller %>Controller" do
     end
 
     it "should redirect to the show page" do
-      assert_equal 302, status
+      assert_equal 302, last_response.status
       assert location.include?("/<%= @pluralized %>/show/")
     end
 
@@ -101,7 +101,7 @@ describe "<%= @controller if @controller %>Controller" do
     end
 
     it "should redirect to the index page" do
-      assert_equal 302, status
+      assert_equal 302, last_response.status
     end
 
     it "should delete the <%= @singular %>" do

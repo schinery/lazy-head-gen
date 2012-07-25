@@ -21,34 +21,8 @@ module LazyHeadGen
   # and trys to view an admin page
   #
   def assert_admin_not_logged_in
-    assert !ok?
-    assert_equal 302, status
-    assert_equal "http://example.org/admin/sessions/new", location
-  end
-
-  # Some shorthands for last_request and last_response varibles
-  #
-  def path
-    last_request.path
-  end
-
-  def session
-    last_request.env['rack.session']
-  end
-
-  def body
-    last_response.body
-  end
-
-  def status
-    last_response.status
-  end
-
-  def location
-    last_response.original_headers["Location"]
-  end
-
-  def ok?
-    last_response.ok?
+    assert !last_response.ok?
+    assert_equal 302, last_response.status
+    assert_equal "http://example.org/admin/sessions/new", last_response.original_headers["Location"]
   end
 end

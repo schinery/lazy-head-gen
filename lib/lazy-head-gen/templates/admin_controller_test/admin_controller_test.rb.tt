@@ -103,8 +103,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
 
       it "should display the <%= @pluralized %> index page" do
         assert ok?
-        assert_equal 200, status
-        assert_equal "/admin/<%= @pluralized %>", path
+        assert_equal 200, last_response.status
+        assert_equal "/admin/<%= @pluralized %>", last_request.path
       end
     end
     # END GET index
@@ -117,8 +117,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
 
       it "should display the <%= @pluralized %> new page" do
         assert ok?
-        assert_equal 200, status
-        assert_equal "/admin/<%= @pluralized %>/new", path
+        assert_equal 200, last_response.status
+        assert_equal "/admin/<%= @pluralized %>", last_request.path
       end
     end
     # END GET new
@@ -132,7 +132,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should redirect to the edit page" do
-        assert_equal 302, status
+        assert_equal 302, last_response.status
         assert location.include?("/admin/<%= @pluralized %>/edit/#{<%= @model %>.last.to_param}")
       end
 
@@ -151,8 +151,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
 
       it "should display the <%= @pluralized %> edit page" do
         assert ok?
-        assert_equal 200, status
-        assert_equal "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}", path
+        assert_equal 200, last_response.status
+        assert_equal "/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}", last_request.path
       end
     end
     # END GET edit
@@ -170,7 +170,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should redirect to the edit page" do
-        assert_equal 302, status
+        assert_equal 302, last_response.status
         assert location.include?("/admin/<%= @pluralized %>/edit/#{@<%= @singular %>.to_param}")
       end
 
@@ -189,7 +189,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should redirect to the index page" do
-        assert_equal 302, status
+        assert_equal 302, last_response.status
       end
 
       it "should destroy a <%= @singular %>" do
