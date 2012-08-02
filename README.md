@@ -1,8 +1,9 @@
 # lazy-head-gen
 
-lazy-head-gen provides some extra generators for the [Padrino](https://github.com/padrino/padrino-framework) framework.
+lazy-head-gen provides some extra generators for the 
+[Padrino](https://github.com/padrino/padrino-framework) framework.
 
-The generators are hard wired to use ActiveRecord and MiniTest, as that is the options I normally use in development at [Head](http://www.headlondon.com).
+The generators are hard wired to use ActiveRecord and MiniTest, as are the options we normally use in development at [Head](http://www.headlondon.com).
 
 ## Installation
 
@@ -17,7 +18,8 @@ gem 'lazy-head-gen', :group => [:development, :test]
 ```
 
 Padrino gotcha: You'll need to put the `gem 'lazy-head-gen'` requirement *after* `gem 'padrino'` in your Gemfile.
-lazy-head-gen depends on Padrino being loaded before it can do it's stuff.
+
+lazy-head-gen depends on Padrino being loaded before it can do its stuff.
 
 Also you will need to add this gem for both :development and :test groups in your Gemfile. There are a few bundled test helper functions and assertions which are used by the test files that are generated.
 
@@ -81,7 +83,7 @@ First off you will need to add this line to your test_config.rb file, after you 
 include LazyHeadGen
 ```
 
-This will allow you to access the assert_admin_not_logged_in test used for the not logged in admin generated tests.
+This will allow you to access the assert_admin_not_logged_in test used for the not logged in generated admin tests.
 
 ```
 def assert_admin_not_logged_in
@@ -91,13 +93,15 @@ def assert_admin_not_logged_in
 end
 ```
 
-NOTE: As of 0.5.0 the shorthands for path, status etc have been removed. This was as I discovered they conflict with other tests and properties of objects... which is not good.
+NOTE: As of 0.5.0 the shorthands for path, status etc have been removed. Because they
+weren't namespaced, they confliced with other tests and properties of objects...not good.
 
 If you have been using them in your projects you will need to change them to the regular variables, ie last_response.status etc.
 
 ### blueprints.rb
 
-The scaffold and admin_controller_test generators are reliant on you using a blueprints.rb file.
+The scaffold and admin_controller_test generators are reliant on you using a 
+machinist blueprints.rb file.
 
 ## To Do List
 
