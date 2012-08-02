@@ -158,9 +158,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START GET edit
     describe "GET edit" do
       before do
-        @<%= @singular %> = <%= @model %>.make!
-
-        get admin_url(:<%= @pluralized %>, :edit, :id => @<%= @singular %>.to_param)
+        get admin_url(:<%= @pluralized %>, :edit, :id => 1)
       end
 
       it "should not display the <%= @pluralized %> edit page" do
@@ -172,11 +170,9 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START PUT update
     describe "PUT update" do
       before do
-        @<%= @singular %> = <%= @model %>.make!
-
         put admin_url(:<%= @pluralized %>, 
               :update, 
-              :id => @<%= @singular %>.to_param, :<%= @singular %> => <%= @model %>.make.attributes)
+              :id => 1, :<%= @singular %> => <%= @model %>.make.attributes)
       end
 
       it "should not return the updated text" do
@@ -188,9 +184,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START DELETE destroy
     describe "on DELETE destroy" do
       before do
-        @<%= @singular %> = <%= @model %>.make!
-
-        delete admin_url(:<%= @pluralized %>, :destroy, :id => @<%= @singular %>.to_param)
+        delete admin_url(:<%= @pluralized %>, :destroy, :id => 1)
       end
 
       it "should not return the destroyed text" do
