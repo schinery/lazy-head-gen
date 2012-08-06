@@ -30,7 +30,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
 
       it "should display the <%= @pluralized %> new page" do
         assert_equal 200, last_response.status
-        assert_equal admin_url(:<%= @pluralized %>, :new) last_request.path
+        assert_equal admin_url(:<%= @pluralized %>, :new), last_request.path
       end
     end
     # END GET new
