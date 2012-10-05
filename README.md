@@ -1,11 +1,8 @@
 # lazy-head-gen
 
-lazy-head-gen provides some extra generators for the
-[Padrino](https://github.com/padrino/padrino-framework) framework.
+lazy-head-gen provides some extra generators for the [Padrino](https://github.com/padrino/padrino-framework) framework.
 
-The generators are hard wired to use ActiveRecord and MiniTest,
-as these are the libraries we normally use in development at
-[Head](http://www.headlondon.com).
+The generators are hard wired to use ActiveRecord, MiniTest and Machinist as these are the libraries we normally use in development at [Head](http://www.headlondon.com).
 
 ## Installation
 
@@ -112,8 +109,7 @@ end
 
 ### blueprints.rb
 
-The scaffold and admin_controller_test generators are reliant on you using a
-machinist blueprints.rb file.
+The scaffold and admin_controller_test generators are reliant on you using a machinist blueprints.rb file.
 
 ## Changelog
 
