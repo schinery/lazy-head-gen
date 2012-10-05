@@ -1,10 +1,10 @@
 # lazy-head-gen
 
-lazy-head-gen provides some extra generators for the 
+lazy-head-gen provides some extra generators for the
 [Padrino](https://github.com/padrino/padrino-framework) framework.
 
-The generators are hard wired to use ActiveRecord and MiniTest, 
-as these are the libraries we normally use in development at 
+The generators are hard wired to use ActiveRecord and MiniTest,
+as these are the libraries we normally use in development at
 [Head](http://www.headlondon.com).
 
 ## Installation
@@ -77,15 +77,30 @@ padrino g scaffold Product title:string summary:text quantity:integer available_
 
 ## Tests
 
-### assert_admin_not_logged_in test
-
 First off you will need to add this line to your test_config.rb file, after you have required boot.rb.
 
 ```
 include LazyHeadGen
 ```
 
-This will allow you to access the assert_admin_not_logged_in test used for the not logged in generated admin tests.
+This will allow you to access the `login_as` and `assert_admin_not_logged_in` methods used in the admin generated tests.
+
+__login_as__
+
+```
+def login_as(account, password = "password", path = "/admin/sessions/create")
+  post path, {
+    :email => account.email, :password => password
+  }
+  follow_redirect!
+end
+
+alias :login_as_admin :login_as
+```
+
+This is also aliased as `login_as_admin` to avoid breaking any previously generated tests.
+
+__assert_admin_not_logged_in__
 
 ```
 def assert_admin_not_logged_in
@@ -98,11 +113,11 @@ end
 NOTE: As of 0.5.0 the shorthands for path, status etc have been removed. Because they
 weren't namespaced, they confliced with other tests and properties of objects...not good.
 
-If you have been using them in your projects you will need to change them to the regular variables, ie last_response.status etc.
+If you have been using them in your projects you will need to change them to the regular variables, ie `last_response.status` etc.
 
 ### blueprints.rb
 
-The scaffold and admin_controller_test generators are reliant on you using a 
+The scaffold and admin_controller_test generators are reliant on you using a
 machinist blueprints.rb file.
 
 ## To Do List
