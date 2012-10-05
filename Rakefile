@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{Some extra generators for Padrino, using ActiveRecord and MiniTest.}
   gem.description = %Q{lazy-head-gen adds some extra generators to Padrino. Currently they are hard wired to use ActiveRecord and MiniTest.}
   gem.email = "stuart.chinery@headlondon.com"
-  gem.authors = ["Stuart Chinery"]
+  gem.authors = ["Stuart Chinery", "Dave Hrycyszyn"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

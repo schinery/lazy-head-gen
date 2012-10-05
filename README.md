@@ -122,5 +122,6 @@ machinist blueprints.rb file.
 
 ## Copyright
 
-Copyright (c) 2012 [Stuart Chinery](http://www.headlondon.com/who-we-are#stuart-chinery), [headlondon.com](http://www.headlondon.com)
+Copyright (c) 2012 [Stuart Chinery](http://www.headlondon.com/who-we-are#stuart-chinery) and [Dave Hrycyszyn](http://www.headlondon.com/who-we-are#david-hrycyszyn) - [headlondon.com](http://www.headlondon.com)
+
 See LICENSE.txt for further details.
