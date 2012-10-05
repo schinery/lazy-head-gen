@@ -110,15 +110,23 @@ def assert_admin_not_logged_in
 end
 ```
 
-NOTE: As of 0.5.0 the shorthands for path, status etc have been removed. Because they
-weren't namespaced, they confliced with other tests and properties of objects...not good.
-
-If you have been using them in your projects you will need to change them to the regular variables, ie `last_response.status` etc.
-
 ### blueprints.rb
 
 The scaffold and admin_controller_test generators are reliant on you using a
 machinist blueprints.rb file.
+
+## Changelog
+
+0.6.X - Removed admin_url helper as it wasn't really needed. If you are using this in your tests you should change them to Admin.url (standard Padrino way of accessing URL's).
+
+Also the syntax was incorrect for :create and :update URL's where the object had been put in the admin_url call. IE admin_url(:books, :create, :book => Book.make.attributes) should change to Admin.url(:books, :create), :book => Book.make.attributes
+
+Changed login_as_admin to login_as, although is aliased so shouldn't break any previous tests.
+
+0.5.X - Removed the shorthands for path, status etc because they
+weren't namespaced so they confliced with other tests and properties of objects...not good.
+
+If you have been using them in your projects you will need to change them to the regular variables, ie `last_response.status` etc.
 
 ## To Do List
 
