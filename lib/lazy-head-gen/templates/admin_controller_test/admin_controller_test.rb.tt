@@ -45,7 +45,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should redirect to the edit page" do
-        assert_equal admin_url(:<%= @pluralized %>, 
+        assert_equal admin_url(:<%= @pluralized %>,
           :edit, :id => <%= @model %>.last.to_param), last_request.path
       end
 
@@ -64,7 +64,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
 
       it "should display the <%= @pluralized %> edit page" do
         assert_equal 200, last_response.status
-        assert_equal admin_url(:<%= @pluralized %>, 
+        assert_equal admin_url(:<%= @pluralized %>,
           :edit, :id => @<%= @singular %>.to_param), last_request.path
       end
     end
@@ -84,7 +84,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       end
 
       it "should redirect to the edit page" do
-        assert_equal admin_url(:<%= @pluralized %>, 
+        assert_equal admin_url(:<%= @pluralized %>,
           :edit, :id => @<%= @singular %>.to_param), last_request.path
       end
 
@@ -170,8 +170,8 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START PUT update
     describe "PUT update" do
       before do
-        put admin_url(:<%= @pluralized %>, 
-              :update, 
+        put admin_url(:<%= @pluralized %>,
+              :update,
               :id => 1, :<%= @singular %> => <%= @model %>.make.attributes)
       end
 

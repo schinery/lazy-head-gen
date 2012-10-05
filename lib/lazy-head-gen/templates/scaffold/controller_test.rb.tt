@@ -9,7 +9,7 @@ describe "<%= @controller if @controller %>Controller" do
     end
 
     it "should display the <%= @pluralized %> index page" do
-      assert_match "This is the index page", body
+      assert_match "This is the index page", last_response.body
     end
   end
   # END GET index
@@ -22,7 +22,7 @@ describe "<%= @controller if @controller %>Controller" do
     end
 
     it "should display the <%= @pluralized %> show page" do
-      assert_match "This is the show page", body
+      assert_match "This is the show page", last_response.body
     end
   end
   # END GET show
@@ -35,7 +35,7 @@ describe "<%= @controller if @controller %>Controller" do
     end
 
     it "should display the <%= @pluralized %> new page" do
-      assert_match "This is the new page", body
+      assert_match "This is the new page", last_response.body
     end
   end
   # END GET new
@@ -49,7 +49,7 @@ describe "<%= @controller if @controller %>Controller" do
 
     it "should redirect to the show page" do
       assert_equal 302, last_response.status
-      assert location.include?("/<%= @pluralized %>/show/")
+      assert last_response.original_headers["Location"].include?("/<%= @pluralized %>/show/")
     end
 
     it "should create a new <%= @singular %>" do
@@ -66,7 +66,7 @@ describe "<%= @controller if @controller %>Controller" do
     end
 
     it "should display the <%= @pluralized %> edit page" do
-      assert_match "This is the edit page", body
+      assert_match "This is the edit page", last_response.body
     end
   end
   # END GET edit
@@ -82,7 +82,7 @@ describe "<%= @controller if @controller %>Controller" do
 
     it "should redirect to the show page" do
       assert_equal 302, last_response.status
-      assert location.include?("/<%= @pluralized %>/show/")
+      assert last_response.original_headers["Location"].include?("/<%= @pluralized %>/show/")
     end
 
     it "should not create a new <%= @singular %>" do
