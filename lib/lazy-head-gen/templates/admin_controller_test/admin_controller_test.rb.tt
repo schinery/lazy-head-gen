@@ -6,18 +6,18 @@ describe "Admin::<%= @controller if @controller %>Controller" do
   describe "when logged in" do
     before do
       @account = Account.make!
-      login_as_admin(@account)
+      login_as(@account)
     end
 
     # START GET index
     describe "GET index" do
       before do
-        get admin_url(:<%= @pluralized %>, :index)
+        get Admin.url(:<%= @pluralized %>, :index)
       end
 
       it "should display the <%= @pluralized %> index page" do
         assert_equal 200, last_response.status
-        assert_equal "/admin/<%= @pluralized %>", last_request.path
+        assert_equal Admin.url(:<%= @pluralized %>, :index), last_request.path
       end
     end
     # END GET index
@@ -25,12 +25,12 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START GET new
     describe "GET new" do
       before do
-        get admin_url(:<%= @pluralized %>, :new)
+        get Admin.url(:<%= @pluralized %>, :new)
       end
 
       it "should display the <%= @pluralized %> new page" do
         assert_equal 200, last_response.status
-        assert_equal admin_url(:<%= @pluralized %>, :new), last_request.path
+        assert_equal Admin.url(:<%= @pluralized %>, :new), last_request.path
       end
     end
     # END GET new
@@ -39,14 +39,12 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     describe "POST create" do
       before do
         @<%= @singular %>_count = <%= @model %>.count
-
-        post admin_url(:<%= @pluralized %>, :create, :<%= @singular %> => <%= @model %>.make.attributes)
+        post Admin.url(:<%= @pluralized %>, :create), :<%= @singular %> => <%= @model %>.make.attributes
         follow_redirect!
       end
 
       it "should redirect to the edit page" do
-        assert_equal admin_url(:<%= @pluralized %>,
-          :edit, :id => <%= @model %>.last.to_param), last_request.path
+        assert_equal Admin.url(:<%= @pluralized %>, :edit, :id => <%= @model %>.last.to_param), last_request.path
       end
 
       it "should create a <%= @singular %>" do
@@ -59,13 +57,12 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     describe "GET edit" do
       before do
         @<%= @singular %> = <%= @model %>.make!
-        get admin_url(:<%= @pluralized %>, :edit, :id => @<%= @singular %>.to_param)
+        get Admin.url(:<%= @pluralized %>, :edit, :id => @<%= @singular %>.to_param)
       end
 
       it "should display the <%= @pluralized %> edit page" do
         assert_equal 200, last_response.status
-        assert_equal admin_url(:<%= @pluralized %>,
-          :edit, :id => @<%= @singular %>.to_param), last_request.path
+        assert_equal Admin.url(:<%= @pluralized %>, :edit, :id => @<%= @singular %>.to_param), last_request.path
       end
     end
     # END GET edit
@@ -76,16 +73,15 @@ describe "Admin::<%= @controller if @controller %>Controller" do
         @<%= @singular %> = <%= @model %>.make!
         @<%= @singular %>_count = <%= @model %>.count
 
-        put admin_url(:<%= @pluralized %>, :update, :id => @<%= @singular %>.to_param,
-          :<%= @singular %> => <%= @model %>.make.attributes)
+        put Admin.url(:<%= @pluralized %>, :update, :id => @<%= @singular %>.to_param),
+          :<%= @singular %> => <%= @model %>.make.attributes
 
         @<%= @singular %>.reload
         follow_redirect!
       end
 
       it "should redirect to the edit page" do
-        assert_equal admin_url(:<%= @pluralized %>,
-          :edit, :id => @<%= @singular %>.to_param), last_request.path
+        assert_equal Admin.url(:<%= @pluralized %>, :edit, :id => @<%= @singular %>.to_param), last_request.path
       end
 
       it "should not create a new a <%= @singular %>" do
@@ -99,12 +95,12 @@ describe "Admin::<%= @controller if @controller %>Controller" do
       before do
         @<%= @singular %> = <%= @model %>.make!
         @<%= @singular %>_count = <%= @model %>.count
-        delete admin_url(:<%= @pluralized %>, :destroy, :id => @<%= @singular %>.to_param)
+        delete Admin.url(:<%= @pluralized %>, :destroy, :id => @<%= @singular %>.to_param)
         follow_redirect!
       end
 
       it "should redirect to the index page" do
-        assert_equal admin_url(:<%= @pluralized %>, :index), last_request.path
+        assert_equal Admin.url(:<%= @pluralized %>, :index), last_request.path
       end
 
       it "should destroy a <%= @singular %>" do
@@ -122,7 +118,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START GET index
     describe "GET index" do
       before do
-        get admin_url(:<%= @pluralized %>, :index)
+        get Admin.url(:<%= @pluralized %>, :index)
       end
 
       it "should not display the <%= @pluralized %> index page" do
@@ -134,7 +130,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START GET new
     describe "GET new" do
       before do
-        get admin_url(:<%= @pluralized %>, :new)
+        get Admin.url(:<%= @pluralized %>, :new)
       end
 
       it "should not display the <%= @pluralized %> new page" do
@@ -146,7 +142,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START POST create
     describe "Post create" do
       before do
-        post admin_url(:<%= @pluralized %>, :create, :<%= @singular %> => <%= @model %>.make.attributes)
+        post Admin.url(:<%= @pluralized %>, :create), :<%= @singular %> => <%= @model %>.make.attributes
       end
 
       it "should not return the created text" do
@@ -158,7 +154,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START GET edit
     describe "GET edit" do
       before do
-        get admin_url(:<%= @pluralized %>, :edit, :id => 1)
+        get Admin.url(:<%= @pluralized %>, :edit, :id => 1)
       end
 
       it "should not display the <%= @pluralized %> edit page" do
@@ -170,9 +166,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START PUT update
     describe "PUT update" do
       before do
-        put admin_url(:<%= @pluralized %>,
-              :update,
-              :id => 1, :<%= @singular %> => <%= @model %>.make.attributes)
+        put Admin.url(:<%= @pluralized %>, :update, :id => 1), :<%= @singular %> => <%= @model %>.make.attributes
       end
 
       it "should not return the updated text" do
@@ -184,7 +178,7 @@ describe "Admin::<%= @controller if @controller %>Controller" do
     # START DELETE destroy
     describe "on DELETE destroy" do
       before do
-        delete admin_url(:<%= @pluralized %>, :destroy, :id => 1)
+        delete Admin.url(:<%= @pluralized %>, :destroy, :id => 1)
       end
 
       it "should not return the destroyed text" do
