@@ -15,7 +15,7 @@ require 'uuid'
 require 'thor/group'
 require 'padrino-core/support_lite' unless defined?(SupportLite)
 require 'padrino-admin'
-require File.dirname(__FILE__) + '/../lib/lazy-head-gen.rb'
+require 'lazy-head-gen'
 
 begin; require 'turn/autorun'; rescue LoadError; end
 
@@ -29,11 +29,6 @@ module Kernel
     capture_io { load File.join(File.dirname(__FILE__), "fixtures", file) }
   end
 end
-
-#class Class
-# # Allow assertions in request context
-# include MiniTest::Assertions
-#end
 
 class MiniTest::Unit::TestCase
   # Sets up a Sinatra::Base subclass defined with the block
@@ -82,15 +77,4 @@ class MiniTest::Unit::TestCase
   def assert_no_match_in_file(pattern, file)
     File.exists?(file) ? refute_match(pattern, File.read(file)) : assert_file_exists(file)
   end
-
-  # Delegate other missing methods to response.
-  # def method_missing(name, *args, &block)
-  #   if response && response.respond_to?(name)
-  #     response.send(name, *args, &block)
-  #   else
-  #     super(name, *args, &block)
-  #   end
-  # end
-
-  # alias :response :last_response
 end
