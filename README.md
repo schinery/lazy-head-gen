@@ -1,5 +1,7 @@
 # lazy-head-gen
 
+[![Build Status](https://secure.travis-ci.org/sleepingstu/lazy-head-gen.png)](http://travis-ci.org/sleepingstu/lazy-head-gen)
+
 lazy-head-gen provides some extra generators for the [Padrino](https://github.com/padrino/padrino-framework) framework. These are set to use ActiveRecord, MiniTest and Machinist as these are the libraries we normally use in development at [Head](http://www.headlondon.com).
 
 ## Installation
